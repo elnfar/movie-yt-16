@@ -1,23 +1,60 @@
-import logo from './logo.svg';
+import React,{useEffect, useState,useRef} from 'react';
 import './App.css';
 
 function App() {
+  const [end,setEnd] = useState('');
+  const [film,setFilm] = useState([]);
+  const inputRef = useRef('')
+
+  useEffect(() => {
+    fetch(`https://imdb-internet-movie-database-unofficial.p.rapidapi.com/search/+${end}`, {
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-host": "imdb-internet-movie-database-unofficial.p.rapidapi.com",
+        "x-rapidapi-key": "180e4b8fe6mshcbc14cd3416cb67p1b7898jsn4d0a54b412a6"
+      }
+    })
+
+    .then(response => {
+      return response.json();
+     })
+     .then(data => {
+      setFilm(data.titles)
+
+    })  
+  })
+const submitForm = (e) => {
+  setEnd(inputRef.current.value)
+  e.preventDefault()
+}
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="map">
+      <form className='form' onSubmit={submitForm}>
+        <input type="text" ref={inputRef}/>
+        <button type='submit'>SUBMIT</button>
+      </form>
+      
+      <div className="print">
+        {film.map((item,index) => {
+          return (
+            <div key={index} className='container'>
+              <div className="secondary">
+              <img src={item.image} alt="image" />
+              <p>{item.title}</p>
+              <p>description : <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium laborum porro amet optio expedita dicta eos rem eligendi, dolores aspernatur?</span></p>
+              </div>        
+              </div>
+            
+            
+          )
+        })}
+        </div>
+      </div>
+      
     </div>
   );
 }
