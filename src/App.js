@@ -22,7 +22,7 @@ function App() {
       setFilm(data.titles)
 
     })  
-  })
+  },[end])
 const submitForm = (e) => {
   setEnd(inputRef.current.value)
   e.preventDefault()
@@ -45,7 +45,6 @@ const submitForm = (e) => {
               <div className="secondary">
               <img src={item.image} alt="image" />
               <p>{item.title}</p>
-              <p>description : <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium laborum porro amet optio expedita dicta eos rem eligendi, dolores aspernatur?</span></p>
               </div>        
               </div>
             
