@@ -18,8 +18,8 @@
 
 .print {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(3,400px);
+    
 }
 
 .map .form{
@@ -61,9 +61,9 @@
 }
 
 .secondary {
-    height: 700px;
-    width: 90%;
-    padding: 20px;
+    height: 470px;
+    width: 75%;
+    padding: 10px;
     box-shadow: -16px 0px 16px 10px #47444446;
     border-radius: 25px;
     border: 1px solid white;

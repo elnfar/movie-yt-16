@@ -11,7 +11,7 @@ function App() {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "imdb-internet-movie-database-unofficial.p.rapidapi.com",
-        "x-rapidapi-key": "180e4b8fe6mshcbc14cd3416cb67p1b7898jsn4d0a54b412a6"
+        "x-rapidapi-key": ""
       }
     })
 
